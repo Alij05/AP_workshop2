@@ -37,8 +37,7 @@ public class Student {
     }
 
     public void printStudentInfo(){
-        System.out.println(firstName + " " + lastName);
-        System.out.println(id + "  " + grade);
+        System.out.println(firstName + " " + lastName + "\n" + id + "  " + grade + "\n");
     }
 }
 

@@ -10,12 +10,13 @@ public class Lab {
         setTeacherName(teacherName);
         setDayOfWeek(dayOfWeek);
         setMaxSize(maxSize);
+        //currentSize = 0;
         students = new Student[maxSize];
     }
 
     public void enrollStudent(Student std){
         if(currentSize < maxSize){
-            students[currentSize] = std;
+            this.students[currentSize] = std;
             currentSize++;
         }
     }
@@ -29,18 +30,20 @@ public class Lab {
     public void setMaxSize(int maxSize){
         this.maxSize = maxSize;
     }
-    public void setStudents(Student[] students){
-        this.students = students;
+    public void setStudents(Student std) {
+        for (int i = 0; i < maxSize; i++) {
+            this.students[i] = std;
+        }
     }
     public void setCurrentSize(int currentSize){
         this.currentSize = currentSize;
     }
     public void setAvg(){
         double sum = 0;
-        for (int i = 0; i < maxSize; i++) {
+        for (int i = 0; i < currentSize; i++) {
             sum += students[i].getGrade();
         }
-        avg = sum / maxSize;
+        avg = sum / currentSize;
     }
 
     public String getTeacherName(){
@@ -59,9 +62,10 @@ public class Lab {
         return avg;
     }
 
-    public void print(){
-        System.out.println("Lab's Student : ");
-        for (int i = 0; i < maxSize; i++) {
+    public void printInformations(){
+        System.out.println(teacherName);
+        System.out.println("\nLab's Student : \n");
+        for (int i = 0; i < currentSize; i++) {
             students[i].printStudentInfo();
         }
     }
